@@ -102,8 +102,25 @@ def numeric_pipeline():
     
     return make_pipeline(SimpleImputer(strategy='median'), StandardScaler())
 
-# Step 9 - categorical_pipeline (not yet solved)
-# TODO: implement
+# Step 9 - categorical_pipeline
+from sklearn.impute import SimpleImputer
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import OneHotEncoder
+
+
+def categorical_pipeline():
+    """Crée un pipeline pour les variables catégorielles.
+
+    Force la détection des chaînes manquantes (None/NaN) pour éviter le [0,0].
+    """
+    # L'ajout de missing_values=None ou la gestion des chaînes force
+    # l'imputer à convertir et remplacer correctement le None par 'INLAND'
+    pipeline_cat = make_pipeline(
+        SimpleImputer(strategy="most_frequent", missing_values=None),
+        OneHotEncoder(handle_unknown="ignore"),
+    )
+
+    return pipeline_cat
 
 # Step 10 - build_preprocessing (not yet solved)
 # TODO: implement
