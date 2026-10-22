@@ -204,8 +204,15 @@ def build_preprocessing(n_clusters=10, gamma=1.0, random_state=42):
     
     return ColumnTransform
 
-# Step 11 - rmse (not yet solved)
-# TODO: implement
+# Step 11 - rmse
+import numpy as np
+def rmse(y_true, y_pred):
+    # TODO: sqrt(mean((y_true - y_pred)^2)) as a float.
+    y_true = np.array(y_true)
+    y_pred = np.array(y_pred)
+    ecart = np.mean((y_true - y_pred) ** 2)
+    RMSE = np.sqrt(ecart)
+    return float(RMSE)
 
 # Step 12 - dummy_baseline_rmse (not yet solved)
 # TODO: implement
